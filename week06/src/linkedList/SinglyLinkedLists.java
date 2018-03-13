@@ -15,42 +15,67 @@ public class SinglyLinkedLists<T> implements List<T>
 	@Override
 	public void add(int index, T value) throws ListAccessError
 	{
-		Node<T> newNode = new Node<T>(value);
+		//temp node equals the value
+		Node<T> temp = new Node<T>(value);
 		
+		//if it is empty
 		if(isEmpty())
 		{
-			head = newNode;
+			//head is the value
+			head = temp;
+			//tail equals what the head did
 			tail = head;
 		}
 		else
 		{
-			Node<T> temp = head;
-			int i = 0;
-			while(i < index-1)
+			//newNode will be the starting point, the head
+			Node<T> newNode = head;
+			int i = 1;
+			//go through the list until you are at the node before the one you want
+			while(i < index)
 			{
-				temp = temp.getNext();
+				newNode = newNode.getNext();
 				i++;
 			}
-			temp.setNext(newNode);
-			temp = newNode;
+			//set the new node and the one before it
+			temp.setNext(newNode.getNext());
+			newNode.setNext(temp);
 		}
+		// add to the number of nodes
 		noOfNodes ++;
 	}
 	
 	@Override
 	public T remove(int index) throws ListAccessError
 	{
-
+		Node<T> temp = head;
+		//if its node empty
+		if(!isEmpty())
+		{
+			int i = 1;
+			//go through the list to the one before you want
+			while(i != index)
+			{
+				
+				temp = temp.getNext();
+				i++;
+				
+			}
+			//shift the nodes
+			temp.setNext(temp.getNext().getNext());
+			noOfNodes --;
+		}
 		return null;
 	}
 
 	@Override
+	//get the value of the node at index
 	public T get(int index) throws ListAccessError
 	{
 
 		return getNode(index).getValue();
 	}
-
+	
 	private Node<T> getNode(int index) throws ListAccessError
 	{
 		

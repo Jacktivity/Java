@@ -41,26 +41,34 @@ public class SelectionSortTest extends SortTester<Integer>
     protected void tearDown()
     {
 		testEnd = System.nanoTime();
-		System.out.println("Test " +  "took " + (testEnd-testStart)/1000);
+	
     }
     @Test
     public void test10()
     {
         super.test(sorter,generator,10);
+        tearDown();
+        System.out.println("Test 10 " +  "took " + (testEnd-testStart)/1000);
     }
     @Test
     public void test100()
     {
         super.test(sorter,generator,100);
+        tearDown();
+        System.out.println("Test 100 " +  "took " + (testEnd-testStart)/1000);
     }
     @Test
     public void test1000()
     {
         super.test(sorter,generator,1000);
+        tearDown();
+        System.out.println("Test 1000 " +  "took " + (testEnd-testStart)/1000);
     }
     @Test
     public void test10000()
     {
         super.test(sorter,generator,10000);
+        tearDown();
+        System.out.println("Test 10000 " +  "took " + (testEnd-testStart)/1000);
     }
 }

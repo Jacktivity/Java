@@ -23,6 +23,7 @@ public class SimpleRandomListing extends RandomListing
      */
     protected void randomise() 
     {
+    	setUp();
     	//create an int array and set it to equal the same size of the array
         int[] copy = new int[getArray().length];
         // used to indicate if elements have been used
@@ -49,15 +50,15 @@ public class SimpleRandomListing extends RandomListing
         	//set the array to equal the new randomised copy
             getArray()[index] = copy[index];
         }
-      
+      tearDown();
     }
     
     public static void main(String[] args) 
     {
     	//create new class, set the amount of numbers being randomised
-    	RandomListing count = new SimpleRandomListing(20);
+    	RandomListing count = new SimpleRandomListing(100);
     	//print in debug log for testing purposes, not advised
-    	System.out.println(Arrays.toString(count.getArray()));
+    	System.out.println(Arrays.toString(count.getArray())+ count.printTime());
     }
 
 } // End of class SimpleRandomCount

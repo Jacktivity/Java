@@ -19,7 +19,11 @@ public abstract class RandomListing extends SortedListing
      * Generate an array containing elements in a random order
      * 
      * @param size the size of the array to be generated
+     * 
      */
+	
+	private static long testStart, testEnd;
+	
     public RandomListing(int size) 
     {
         super(size);
@@ -42,5 +46,21 @@ public abstract class RandomListing extends SortedListing
     protected int getRandomIndex() 
     {
         return random.nextInt(getArray().length);
+    }
+    //get time at the start
+    protected void setUp()
+    {
+    	testStart = System.nanoTime();
+    }
+    //get time at the end
+    protected void tearDown()
+    {
+    	testEnd = System.nanoTime();
+    }
+    //return the the time in microseconds
+    protected String printTime()
+    {
+    	String time =  "\n" + "Test " + "took " + (testEnd-testStart)/1000 + " microseconds";
+		return time;
     }
 }

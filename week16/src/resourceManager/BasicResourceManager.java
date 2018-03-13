@@ -127,4 +127,5 @@ public abstract class BasicResourceManager implements ResourceManager
         System.out.println(resource + " has " + usesLeft + " uses left");
         numberOfUsers--;
     }
+
 }

@@ -9,6 +9,7 @@ public class GenericMethodsTest {
 	/**
 	 * A selection of tests for equals
 	 */
+	GenericMethods newTest = new GenericMethods();
 	
 	@Test
 	public void testEqualIntegers() {
@@ -44,4 +45,7 @@ public class GenericMethodsTest {
 	public void testNotEqualNull2() {
 		assertEquals(false,GenericMethods.equals("Hugh", null));
 	}
+	
+	
+	
 }

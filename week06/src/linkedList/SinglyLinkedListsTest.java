@@ -6,6 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import RandomArray.RandomIntegerArray;
+
 public class SinglyLinkedListsTest
 {
 		@Rule
@@ -106,6 +108,41 @@ public class SinglyLinkedListsTest
 			thrown.expect(ListAccessError.class);
 			thrown.expectMessage("Index out of bounds");
 			list.get(6);
+		}
+		@Test
+		public void randomArrayTestLow() throws ListAccessError
+		{
+			long startTime = System.nanoTime();
+			
+			SinglyLinkedLists<Integer> list = new SinglyLinkedLists<Integer>();
+			
+			RandomIntegerArray rand = new RandomIntegerArray(500);
+			Integer[] temp = rand.randomArray(500);
+			
+			for(int i = 0; i < temp.length; i++)
+			{
+				list.add(i, temp[i].intValue());
+			}
+			long endTime = System.nanoTime();
+			System.out.println("Array Position: " + temp[375].toString() + " List Position: " + list.get(375) + " Time Taken in Microseconds: " + (endTime-startTime)/10000);
+			assertEquals(temp[375],list.get(375));
+		}
+		@Test
+		public void randomArrayTestHigh() throws ListAccessError
+		{
+			long startTime = System.nanoTime();
+			SinglyLinkedLists<Integer> list = new SinglyLinkedLists<Integer>();
+			
+			RandomIntegerArray rand = new RandomIntegerArray(50000);
+			Integer[] temp = rand.randomArray(50000);
+			
+			for(int i = 0; i < temp.length; i++)
+			{
+				list.add(i, temp[i].intValue());
+			}
+			long endTime = System.nanoTime();
+			System.out.println("Array Position: " + temp[4756].toString() + " List Position: " + list.get(4756) + " Time Taken in Microseconds: " + (endTime-startTime)/10000);
+			assertEquals(temp[4756],list.get(4756));
 		}
 		
 

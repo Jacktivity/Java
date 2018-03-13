@@ -31,8 +31,12 @@ public class ResourceSystem
      * @param maxUseages the maximum number of times this resource can be used (the actual number may
      * be lower - see BasicResourceManager)
      */
-    public void addResource(String name,int maxUseages) {
-        //managers.add(new ResourceManager(new Resource(name),maxUseages));
+    public void addResource(String name,int maxUseages)
+    {
+    	
+    	//managers.add(new BResourceManager(new Resource(name), maxUseages));
+        managers.add(new LockResourceManager(new Resource(name),maxUseages));
+    	//add my class here
     }
     
     /**

@@ -41,27 +41,67 @@ public class QuickSortTest extends SortTester<Integer>
     protected void tearDown()
     {
 		testEnd = System.nanoTime();
-		System.out.println("Test " +  "took " + (testEnd-testStart)/1000);
+		
+    }
+    @Test
+    public void test1()
+    {
+        super.test(sorter,generator,1);
+    
+    }
+    @Test
+    public void test2()
+    {
+        super.test(sorter,generator,2);
+        
+    }
+    @Test
+    public void test3()
+    {
+        super.test(sorter,generator,3);
+        
+    }
+    @Test
+    public void test4()
+    {
+        super.test(sorter,generator,4);
+
+    }
+    @Test
+    public void test5()
+    {
+        super.test(sorter,generator,5);
+       
+    }
+    @Test
+    public void test6()
+    {
+        super.test(sorter,generator,6);
+   
+    }
+    @Test
+    public void test7()
+    {
+        super.test(sorter,generator,7);
+       
+    }
+    @Test
+    public void test8()
+    {
+        super.test(sorter,generator,8);
+       
+    }
+    @Test
+    public void test9()
+    {
+        super.test(sorter,generator,9);
+
     }
     @Test
     public void test10()
     {
         super.test(sorter,generator,10);
-    }
-    @Test
-    public void test100()
-    {
-        super.test(sorter,generator,100);
-    }
-    @Test
-    public void test1000()
-    {
-        super.test(sorter,generator,1000);
-    }
-    @Test
-    public void test10000()
-    {
-        super.test(sorter,generator,10000);
+    
     }
 
 }
