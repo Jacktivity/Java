@@ -15,10 +15,13 @@ public class DepthFirstTraversal<T> extends AdjacencyGraph<T> implements Travers
 	{
 		for(int i = 0; i<getNodes().size(); i++)
 		{
+			//If we have not visited all the nodes
 			if(visited.size() <getNodes().size())
 			{
+				//store our current node
 				@SuppressWarnings("unchecked")
 				T startNode = (T) getNodes().toArray()[i];
+				//If our visited array does not contain this node
 				if(!visited.contains(startNode))
 				{
 					recursiveDepthFirstTraversal(startNode);
@@ -32,19 +35,23 @@ public class DepthFirstTraversal<T> extends AdjacencyGraph<T> implements Travers
 
 	public void recursiveDepthFirstTraversal(T node) throws GraphError
 	{
-		
+			//Add our node to the visited list and our graph
 			visited.add(node);
 			ourGraph.add(node);
+			//set what the neighbours are
 			Set<T> neighboursSet = getNeighbours(node);
-
+			//put the neighbours into an object array
 			@SuppressWarnings("unchecked")
 			T[] neighbouringNodes = (T[]) neighboursSet.toArray();
-
+			//check through all the neighbouring nodes
 			for (int i = 0; i < neighbouringNodes.length; i++)
 			{
+				//this node is the current neighbour
 				T n = neighbouringNodes[i];
+				// if it is not visited and exists
 				if (n != null && !visited.contains(n))
 				{
+					//start again from here
 					recursiveDepthFirstTraversal(n);
 					
 				}

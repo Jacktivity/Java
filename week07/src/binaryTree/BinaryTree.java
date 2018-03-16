@@ -61,7 +61,6 @@ public class BinaryTree<T extends Comparable<? super T>> implements BTree<T>
 		System.out.println(tree.value());
 		System.out.println(leftV);
 		System.out.println(rightV);
-		System.out.println(rightRightV);
-	      
+		System.out.println(rightRightV);   
 	}
 }

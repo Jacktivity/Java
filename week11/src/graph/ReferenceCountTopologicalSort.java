@@ -7,7 +7,9 @@ import java.util.Map.Entry;
 
 public class ReferenceCountTopologicalSort<T> extends AdjacencyGraph<T> implements TopologicalSort<T>
 {
+	//create our hasmap 
 	HashMap<T, Integer> map = new HashMap<T, Integer>();
+	//create our list for sorted nodes
 	List<T> sortedNodes = new ArrayList<T>();
 
 	@Override
@@ -23,6 +25,7 @@ public class ReferenceCountTopologicalSort<T> extends AdjacencyGraph<T> implemen
 
 	private void initialise()
 	{
+		//add all our empty nodes
 		for (T node : getNodes())
 		{
 			map.put(node, 0);
@@ -31,15 +34,17 @@ public class ReferenceCountTopologicalSort<T> extends AdjacencyGraph<T> implemen
 	
 	private void setUpReferenceCounts() throws GraphError
 	{
-
+		//for every object in every node
 		for (T node : getNodes())
 		{
+			//for every object in every neighbours node
 			for (T successor : getNeighbours(node))
 			{
 				int references = map.get(successor);
+				//if the current neighbour is not null
 				if (map.get(successor) != null)
 				{
-
+					//add to our hashmap
 					map.put(successor, ++references);
 				}
 
@@ -49,22 +54,29 @@ public class ReferenceCountTopologicalSort<T> extends AdjacencyGraph<T> implemen
 	}
 	public void addToSort() throws GraphError
 	{
+		//whilst we have not sorted the nodes
 		while(sortedNodes.size() < getNodes().size())
 		{
 			for (T node : getNodes())
 			{
+				//if the node is not null and the value is more than 0
 				if (map.get(node) != null &&map.get(node).intValue() == 0)
 				{
+					//add to our sorted nodes
 					sortedNodes.add(node);
+					//for every neighbour
 					for (T successor : getNeighbours(node))
 					{
 						Integer references = map.get(successor);
+						//if our successor is not null
 						if (references != null)
 						{
+							//add to our map
 							map.put(successor, references - 1);
 							
 						}
 					}
+					//remove from our map
 					map.remove(node);
 					break;
 				}
